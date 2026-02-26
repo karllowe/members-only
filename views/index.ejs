@@ -2,5 +2,26 @@
     <body>
         <h1>Hello Karl!</h1>
         <p>welcome to my page</p>
+
+        <h2>Sign up:</h2>
+        <form action="/signup" method="POST" class="form">
+            <div class="formRow">
+                <label for="firstname">First name</label>
+                <input type="text" maxlength="255" id="firstName" name="first_name" required>
+            </div>
+            <div>
+                <label for="lastName">Last name</label>
+                <input type="text" maxlength="255" id="lastName" name="last_name" required>
+            </div>
+            <div>
+                <label for="username">Email</label>
+                <input type="email" maxlength="255" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="Submit">Sign up</button>
+        </form>
     </body>
 </html>
