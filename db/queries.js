@@ -6,7 +6,7 @@ async function signUpUser(firstName, lastName, username, password) {
             firstName,
             lastName,
             username,
-            true,
+            false,
             password
         ]);
     } catch (err) {
@@ -19,7 +19,22 @@ async function findUserByUsername(username) {
     return rows[0];
 }
 
+async function getMembershipCode() {
+    const {code} = await pool.query("SELECT joining_code from membership_key");
+    return code[0];
+}
+
+async function updateMembership(id) {
+    try {
+        await pool.query("UPDATE users SET is_member = true WHERE id = $1", [id])
+    } catch (err) {
+        return next(err)
+    }
+}
+
 module.exports= {
     signUpUser,
-    findUserByUsername
+    findUserByUsername,
+    getMembershipCode,
+    updateMembership
 }

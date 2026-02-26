@@ -1,7 +1,24 @@
 <html>
     <body>
-        <h1>Hello Karl!</h1>
-        <p>welcome to my page</p>
-        <a href="/signup" class="btn">Sign up</a>
+        <% if (locals.user) {%>
+            <h1>Welcome back <%= user.username %></h1>
+            <a href="/log-out">log out</a>
+            <%} else {%>
+                <h1>Welcome!</h1>
+                <p>welcome to my page</p>
+                <a href="/signup" class="btn">Sign up</a>
+                <h2>Login</h2>
+                <form action="/log-in" method="POST">
+                    <div class="formRow">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="username">
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password">
+                    </div>
+                    <button type="submit">Log in</button>
+                </form>
+            <%}%>
     </body>
 </html>

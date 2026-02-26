@@ -11,6 +11,13 @@ async function signUp(req, res) {
     res.redirect("/")
 }
 
+async function joinMembership(req, res) {
+    const userId = req.body.id;
+    await db.updateMembership(userId);
+    res.redirect("/")
+}
+
 module.exports = {
-    signUp
+    signUp,
+    joinMembership
 }

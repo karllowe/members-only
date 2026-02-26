@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the club</title>
+</head>
+<body>
+    <a href="/">Home</a>
+    <h1>Join the club!</h1>
+    <p>Enter the secret code below to join the club!</p>
+    <form action="/membership" method="POST" class="form">
+        <div class="formRow">
+            <label for="secretCode">Secret code</label>
+            <input type="text" id="secretCode" name="secret_code" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
