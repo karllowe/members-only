@@ -1,4 +1,5 @@
 const express = require("express");
+const {query} = require("express-validator");
 const app = express();
 const path = require("node:path");
 const assetsPath = path.join(__dirname, "public");

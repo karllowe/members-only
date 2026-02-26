@@ -1,6 +1,12 @@
 <html>
     <body>
         <h2>Sign up:</h2>
+
+        <% 
+        const errorFor = (field) => errors.find(e => e.path === field);
+        const usernameError = errorFor("username");
+        %>
+
         <form action="/signup" method="POST" class="form">
             <div class="formRow">
                 <label for="firstname">First name</label>
@@ -12,7 +18,19 @@
             </div>
             <div>
                 <label for="username">Email</label>
-                <input type="email" maxlength="255" id="username" name="username" required>
+                <input 
+                    type="email" 
+                    maxlength="255" 
+                    id="username" 
+                    name="username" 
+                    value="<%= values.username ?? '' %>"
+                    required
+                >
+                <% if (usernameError) { %>
+                <p id="username-error" class="fieldError" role="alert">
+                    <%= usernameError.msg %>
+                </p>
+                <% } %>
             </div>
             <div>
                 <label for="password">Password</label>

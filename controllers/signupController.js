@@ -1,7 +1,6 @@
 const db = require("../db/queries");
 const bcrypt = require("bcryptjs");
 
-
 async function signUp(req, res) {
     const firstName = req.body.first_name;
     const lastName = req.body.last_name;

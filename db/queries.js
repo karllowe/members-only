@@ -14,6 +14,12 @@ async function signUpUser(firstName, lastName, username, password) {
     }
 };
 
+async function findUserByUsername(username) {
+    const { rows } = await pool.query("SELECT username FROM users WHERE username = $1", [username]);
+    return rows[0];
+}
+
 module.exports= {
-    signUpUser
+    signUpUser,
+    findUserByUsername
 }
