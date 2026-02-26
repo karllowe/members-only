@@ -21,7 +21,10 @@ app.use(session({secret: "cats", resave: false, saveUninitialized: false }));
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 configurePassport(passport, pool);
-
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    next();
+});
 
 app.use("/", indexRouter);
 app.use("/signup", signupRouter);
