@@ -1,6 +1,6 @@
 <html>
     <body>
-        <% if (locals.user) {%>
+        <% if (locals.currentUser) {%>
             <h1>Welcome back <%= currentUser.first_name %></h1>
             <a href="/log-out">log out</a>
             <%} else {%>
