@@ -2,9 +2,9 @@ const {Router} = require("express");
 const passport = require("passport");
 const indexRouter = Router();
 
-indexRouter.get("/", (req, res) => res.render("index", {user: req.user}));
+indexRouter.get("/", (req, res) => res.render("index"));
 indexRouter.post("/log-in", passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/signup/membership",
     failureRedirect: "/"
 }));
 indexRouter.get("/log-out", (req, res, next) => {

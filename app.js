@@ -18,8 +18,9 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({extended: true}));
 
 app.use(session({secret: "cats", resave: false, saveUninitialized: false }));
+app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.urlencoded({ extended: false }));
+
 configurePassport(passport, pool);
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
