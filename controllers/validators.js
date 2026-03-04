@@ -48,7 +48,20 @@ const handleValidationErrors = (viewName) => (req, res, next) => {
     next();
 };
 
+const membershipValidationRules = [
+    body("secret_code")
+        .notEmpty().withMessage("Please enter a code")
+        .custom(async value => {
+            const correctCode = await db.getMembershipCode();
+            if (value !== correctCode) {
+                throw new Error("incorect code");
+            };
+            return true
+        }),
+];
+
 module.exports={
     signupValidationRules,
-    handleValidationErrors
+    handleValidationErrors,
+    membershipValidationRules
 }

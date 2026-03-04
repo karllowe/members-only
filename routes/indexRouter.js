@@ -4,7 +4,7 @@ const indexRouter = Router();
 
 indexRouter.get("/", (req, res) => res.render("index"));
 indexRouter.post("/log-in", passport.authenticate("local", {
-    successRedirect: "/signup/membership",
+    successRedirect: "/messages",
     failureRedirect: "/"
 }));
 indexRouter.get("/log-out", (req, res, next) => {

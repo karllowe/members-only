@@ -14,7 +14,7 @@ async function signUp(req, res) {
 async function joinMembership(req, res) {
     const userId = req.user.id;
     await db.updateMembership(userId);
-    res.redirect("/")
+    res.redirect("/messages")
 }
 
 module.exports = {

@@ -3,6 +3,12 @@
         <% if (locals.currentUser) {%>
             <h1>Welcome back <%= currentUser.first_name %></h1>
             <a href="/log-out">log out</a>
+            <% if (locals.currentUser.is_member === true) {%>
+                <a href="/messages">messages</a>
+                <%} else {%> 
+                    <a href="/signup/membership">join the club</a>
+                    <%}
+                    %>
             <%} else {%>
                 <h1>Welcome!</h1>
                 <p>welcome to my page</p>

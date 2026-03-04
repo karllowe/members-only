@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3000;
 
 const indexRouter = require("./routes/indexRouter");
 const signupRouter = require("./routes/signupRouter");
+const messagesRouter = require("./routes/messagesRouter");
 const pool = require("./db/pool");
 const configurePassport = require("./config/passport");
 require('dotenv').config();
@@ -20,6 +21,11 @@ app.use(express.urlencoded({extended: true}));
 app.use(session({secret: "cats", resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use((req, res, next) => {
+    console.log(req.session);
+    console.log(req.user);
+    next()
+})
 
 configurePassport(passport, pool);
 app.use((req, res, next) => {
@@ -29,6 +35,7 @@ app.use((req, res, next) => {
 
 app.use("/", indexRouter);
 app.use("/signup", signupRouter);
+app.use("/messages", messagesRouter);
 
 app.use((err, req, res, next) => {
   console.error(err);

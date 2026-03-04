@@ -20,8 +20,8 @@ async function findUserByUsername(username) {
 }
 
 async function getMembershipCode() {
-    const {code} = await pool.query("SELECT joining_code from membership_key");
-    return code[0];
+    const {rows} = await pool.query("SELECT joining_code from membership_key");
+    return rows[0]?.joining_code;
 }
 
 async function updateMembership(id) {
