@@ -11,7 +11,18 @@ async function getMessagePage(req, res) {
     res.render("messages", {messages})
 }
 
+async function postNewMessage(req, res) {
+    const title = req.body.title;
+    const message = req.body.message;
+    const time = new Date();
+    const userID = req.user.id;
+
+    await db.postMessage(title, message, time, userID);
+    res.redirect("/messages")
+}
+
 
 module.exports = {
-    getMessagePage
+    getMessagePage,
+    postNewMessage
 }

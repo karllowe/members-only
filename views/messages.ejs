@@ -12,7 +12,12 @@
     </div>
     <div>
         <h1>Messages</h1>
-        <button>new</button>
+        <button
+            type="button"
+            onclick="document.getElementById('newMessageModal').showModal()"
+        >
+            new
+        </button>
     </div>
     <% if (messages) {%>
         <ul>
@@ -29,5 +34,23 @@
         </ul>
     <%}
     %>
+    <dialog id="newMessageModal">
+        <div>
+            <h2>New message</h2>
+            <button type="button" onClick="document.getElementById('newMessageModal').close()">Close</button>
+        </div>
+        <form method="POST" action="/messages/new">
+            <div>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div>
+                <label for="message">Message:</label>
+                <textarea name="message" id="message"></textarea>
+            </div>
+            <button type="submit">Post</button>
+        </form>
+    </dialog>
+
 </body>
 </html>
