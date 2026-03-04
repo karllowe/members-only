@@ -10,6 +10,24 @@
         <a href="/">Home</a>
         <a href="/log-out">log out</a>
     </div>
-    <h1>Messages</h1>
+    <div>
+        <h1>Messages</h1>
+        <button>new</button>
+    </div>
+    <% if (messages) {%>
+        <ul>
+            <% messages.map((message) => {%>
+                <li>
+                    <div>
+                        Title: <%=message.title %>
+                        Message: <%=message.message %>
+                        By: <%=message.username %>
+                        at: <%=message.time %>
+                    </div>
+                </li>
+            <%})%>
+        </ul>
+    <%}
+    %>
 </body>
 </html>

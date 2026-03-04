@@ -32,9 +32,15 @@ async function updateMembership(id) {
     }
 }
 
+async function getMessages() {
+    const {rows} =  await pool.query("SELECT * FROM messages INNER JOIN users on messages.user_id = users.id");
+    return rows
+}
+
 module.exports= {
     signUpUser,
     findUserByUsername,
     getMembershipCode,
-    updateMembership
+    updateMembership,
+    getMessages
 }
