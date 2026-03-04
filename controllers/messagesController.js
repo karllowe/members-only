@@ -27,7 +27,6 @@ async function deleteMessage(req, res) {
     res.redirect("/messages")
 }
 
-
 module.exports = {
     getMessagePage,
     postNewMessage,

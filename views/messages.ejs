@@ -28,9 +28,11 @@
                         Message: <%=message.message %>
                         By: <%=message.username %>
                         at: <%=message.time %>
-                        <form action="/messages/deleteMessage/<%= message.message_id %>" method="POST">
-                            <button type="submit">Delete</button>
-                        </form>
+                        <% if (locals.currentUser && locals.currentUser.is_admin) {%>
+                            <form action="/messages/deleteMessage/<%= message.message_id %>" method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
+                            <%} %>
                     </div>
                 </li>
             <%})%>

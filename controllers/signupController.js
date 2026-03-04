@@ -6,8 +6,9 @@ async function signUp(req, res) {
     const lastName = req.body.last_name;
     const username = req.body.username;
     const password = await bcrypt.hash(req.body.password,10);
+    const isAdmin = req.body.is_admin === "on";
 
-    await db.signUpUser(firstName, lastName, username, password);
+    await db.signUpUser(firstName, lastName, username, password, isAdmin);
     res.redirect("/")
 }
 

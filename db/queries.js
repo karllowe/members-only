@@ -1,13 +1,14 @@
 const pool = require("./pool");
 
-async function signUpUser(firstName, lastName, username, password) {
+async function signUpUser(firstName, lastName, username, password, isAdmin) {
     try {
-        await pool.query("INSERT INTO users (first_name, last_name, username, is_member, password) VALUES ($1, $2, $3, $4, $5)", [
+        await pool.query("INSERT INTO users (first_name, last_name, username, is_member, password, is_admin) VALUES ($1, $2, $3, $4, $5, $6)", [
             firstName,
             lastName,
             username,
             false,
-            password
+            password,
+            isAdmin
         ]);
     } catch (err) {
         return next(err);
