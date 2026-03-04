@@ -13,3 +13,11 @@ module.exports.isMember = (req, res, next) => {
         res.render("membership", {errors: [], values: {}})
     }
 }
+
+module.exports.isAdmin = (req, res, next) => {
+    if (req.isAuthenticated && req.user.is_admin === true) {
+        next();
+    } else {
+        res.render("../errors/noAccess")
+    }
+}

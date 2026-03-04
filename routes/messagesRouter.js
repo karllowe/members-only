@@ -7,6 +7,7 @@ const db = require("../db/queries");
 
 
 messagesRouter.get("/", isAuth, isMember, messagesController.getMessagePage);
-messagesRouter.post("/new", messagesController.postNewMessage)
+messagesRouter.post("/new", messagesController.postNewMessage);
+messagesRouter.post("/deleteMessage/:id", messagesController.deleteMessage);
 
 module.exports = messagesRouter;

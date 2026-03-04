@@ -21,8 +21,15 @@ async function postNewMessage(req, res) {
     res.redirect("/messages")
 }
 
+async function deleteMessage(req, res) {
+    const messageId = req.params.id;
+    await db.deleteMessage(messageId);
+    res.redirect("/messages")
+}
+
 
 module.exports = {
     getMessagePage,
-    postNewMessage
+    postNewMessage,
+    deleteMessage
 }

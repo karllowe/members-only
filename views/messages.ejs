@@ -28,6 +28,9 @@
                         Message: <%=message.message %>
                         By: <%=message.username %>
                         at: <%=message.time %>
+                        <form action="/messages/deleteMessage/<%= message.message_id %>" method="POST">
+                            <button type="submit">Delete</button>
+                        </form>
                     </div>
                 </li>
             <%})%>

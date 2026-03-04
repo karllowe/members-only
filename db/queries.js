@@ -33,12 +33,16 @@ async function updateMembership(id) {
 }
 
 async function getMessages() {
-    const {rows} =  await pool.query("SELECT * FROM messages INNER JOIN users on messages.user_id = users.id");
+    const {rows} =  await pool.query("SELECT messages.id as message_id, messages.title, messages.message, messages.time, users.id as user_id, users.username FROM messages INNER JOIN users on messages.user_id = users.id");
     return rows
 }
 
 async function postMessage(title, message, time, user_id) {
     await pool.query("INSERT INTO messages (title, message, time, user_id) VALUES ($1, $2, $3, $4)", [title, message, time, user_id])
+}
+
+async function deleteMessage(messageId) {
+    await pool.query("DELETE FROM messages WHERE id = $1", [messageId])
 }
 
 module.exports= {
@@ -47,5 +51,6 @@ module.exports= {
     getMembershipCode,
     updateMembership,
     getMessages,
-    postMessage
+    postMessage,
+    deleteMessage
 }
